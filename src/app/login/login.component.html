@@ -1,0 +1,56 @@
+<div class="w-75 m-auto py-5">
+  <!-- <h1>{{ loginform.get("email")?.errors | json }}</h1> -->
+  <form [formGroup]="loginform" (ngSubmit)="submitLoginForm(loginform)">
+    <div class="form-group my-4">
+      <label for="email">Email</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div
+      *ngIf="loginform.get('email')?.errors && loginform.get('email')?.touched"
+      class="alert alert-danger my-3"
+    >
+      <p *ngIf="loginform.get('email')?.errors?.['required']">
+        Email is Required
+      </p>
+      <p *ngIf="loginform.get('email')?.errors?.['email']">
+        Email is invalid or not found
+      </p>
+    </div>
+    <div class="form-group my-4">
+      <label for="password">Password</label>
+      <input
+        class="form-control"
+        type="password"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+    <div
+      *ngIf="
+        loginform.get('password')?.errors && loginform.get('password')?.touched
+      "
+      class="alert alert-danger my-3"
+      class="alert alert-danger my-3"
+    >
+      <p *ngIf="loginform.get('password')?.errors?.['required']">
+        Password is Required
+      </p>
+      <p *ngIf="loginform.get('password')?.errors?.['pattern']">
+        Password is invalid
+      </p>
+    </div>
+
+    <button
+      [disabled]="loginform.invalid"
+      class="btn btn-success text-white my-4"
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<!-- <carousel>
+  <slide>
+    <img src="https://picsum.photos/id/944/900/500" alt="first slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="https://picsum.photos/id/1011/900/500" alt="second slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="https://picsum.photos/id/984/900/500" alt="third slide" style="display: block; width: 100%;">
+  </slide>
+</carousel>
+ -->
+
+<carousel
+  [itemsPerSlide]="itemsPerSlide"
+  [singleSlideOffset]="false"
+  [interval]="3000"
+  [indicatorsByChunk]="true"
+  [isAnimated]="true"
+>
+  <slide
+    *ngFor="let movie of trendingMovies; let index = index"
+    class="text-center slide"
+  >
+    <img
+      [src]="imgPrefix + movie.poster_path"
+      style="width: 630px; height: 77vh"
+    />
+  </slide>
+</carousel>

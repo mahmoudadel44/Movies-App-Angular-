@@ -1,0 +1,79 @@
+<section class="movieDetails">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          class="w-100"
+          [src]="imgPrefix + movieDetails?.poster_path"
+          alt="poster"
+        />
+      </div>
+      <div class="col-md-8">
+        <h3>
+          {{ movieDetails.title }} {{ movieDetails.adult ? "+18" : null }}
+        </h3>
+
+        <p class="py-4">{{ movieDetails.overview }}</p>
+        Generes:
+        <ul class="mt-2">
+          <li *ngFor="let genre of movieDetails.genres">
+            {{ genre.name }}
+          </li>
+        </ul>
+        <div class="mt-4">
+          Spoken Languages :
+          <ul class="mt-2">
+            <span
+              *ngFor="
+                let lang of movieDetails?.spoken_languages;
+                let index = index
+              "
+            >
+              {{ lang.english_name }}
+              {{
+                index + 1 === movieDetails?.spoken_languages.length ? " ." : ","
+              }}
+            </span>
+          </ul>
+        </div>
+        <div class="mt-4">
+          Production Companies :
+          <ul class="mt-2 d-flex">
+            <span
+              *ngFor="
+                let company of movieDetails?.production_companies;
+                let index = index
+              "
+            >
+              {{ company.name }}
+              {{
+                index + 1 === movieDetails?.production_companies.length
+                  ? " ."
+                  : ","
+              }}
+            </span>
+          </ul>
+        </div>
+        <div class="mt-4">
+          Production Countries :
+
+          <ul class="mt-2 d-flex">
+            <span
+              *ngFor="
+                let country of movieDetails?.production_countries;
+                let index = index
+              "
+            >
+              {{ country.name }}
+              {{
+                index + 1 === movieDetails?.production_countries.length
+                  ? " ."
+                  : ","
+              }}
+            </span>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
